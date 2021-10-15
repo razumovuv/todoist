@@ -1,0 +1,43 @@
+{
+    "name": "todoist",
+    "version": "1.0.0",
+    "main": "index.js",
+    "description": "TODOist",
+    "repository": "https://github.com/razumovuv/todoist.git",
+    "author": "Yuriy Razumov <razumov.uv@gmail.com>",
+    "license": "MIT",
+    "private": true,
+    "scripts": {
+        "prettier": "prettier --write src/**/*.js",
+        "build": "webpack --config webpack.dev.js",
+        "start-dev": "webpack serve --config webpack.dev.js"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.15.8",
+        "@babel/eslint-parser": "^7.15.8",
+        "@babel/eslint-plugin": "^7.14.5",
+        "@babel/preset-env": "^7.15.8",
+        "@babel/preset-react": "^7.14.5",
+        "babel-loader": "^8.2.2",
+        "clean-webpack-plugin": "^4.0.0",
+        "css-loader": "^6.3.0",
+        "eslint": "^7.32.0",
+        "eslint-config-airbnb-base": "^14.2.1",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-import": "^2.24.2",
+        "eslint-plugin-prettier": "^4.0.0",
+        "html-webpack-plugin": "^5.3.2",
+        "mini-css-extract-plugin": "^2.4.2",
+        "postcss": "^8.3.9",
+        "postcss-loader": "^6.1.1",
+        "postcss-preset-env": "^6.7.0",
+        "prettier": "^2.4.1",
+        "prettier-eslint": "^13.0.0",
+        "sass": "^1.42.1",
+        "sass-loader": "^12.1.0",
+        "style-loader": "^3.3.0",
+        "webpack": "^5.58.0",
+        "webpack-cli": "^4.9.0",
+        "webpack-dev-server": "^4.3.1"
+    }
+}

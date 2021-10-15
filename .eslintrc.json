@@ -1,0 +1,20 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": ["airbnb-base", "eslint:recomended", "prettier"],
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+        "ecmaVersion": 12,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "plugins": ["@babel", "prettier"],
+    "rules": {
+        "prettier/prettier": "error"
+    }
+}
