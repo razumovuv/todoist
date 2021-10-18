@@ -32,7 +32,7 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env'],
+                        presets: ['@babel/preset-env', '@babel/preset-react'],
                     },
                 },
             },
@@ -61,11 +61,12 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx', '.css', '.scss', '...'],
         alias: {
-            '@': path.resolve(__dirname, 'client/src'),
+            '@': path.resolve(__dirname, 'client/src/'),
             '@assets': path.resolve(__dirname, 'client/src/assets'),
             '@components': path.resolve(__dirname, 'client/src/components'),
             '@views': path.resolve(__dirname, 'client/src/views'),
             '@styles': path.resolve(__dirname, 'client/src/styles'),
+            '@utils': path.resolve(__dirname, 'client/src/utils'),
         },
     },
     plugins: [

@@ -4,7 +4,13 @@
         "es2021": true,
         "node": true
     },
-    "extends": ["airbnb-base", "eslint:recomended", "prettier"],
+    "extends": [
+        "airbnb-base",
+        "eslint:recomended",
+        "plugin:react/recommended",
+        "prettier",
+        "plugin:jsx-a11y/recommended"
+    ],
     "parser": "@babel/eslint-parser",
     "parserOptions": {
         "ecmaVersion": 12,
@@ -13,8 +19,11 @@
             "jsx": true
         }
     },
-    "plugins": ["@babel", "prettier"],
+    "plugins": ["@babel", "prettier", "react", "jsx-a11y"],
     "rules": {
-        "prettier/prettier": "error"
+        "prettier/prettier": "error",
+        "react/jsx-uses-react": "error",
+        "react/jsx-uses-vars": "error",
+        "jsx-a11y/rule-name": 2
     }
 }
