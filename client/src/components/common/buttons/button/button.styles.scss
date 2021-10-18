@@ -1,0 +1,68 @@
+//-------> Colors
+$blue: #5c8bf0;
+$black: #0d1117;
+$white: #ffffff;
+
+//-------> Variables
+$text-color: $white;
+$btn-color: $blue;
+$font-size: 14px;
+
+.btn {
+    float: left;
+    a,
+    span {
+        display: block;
+        min-width: 70px;
+        font-family: 'Roboto', sans-serif;
+        text-decoration: none;
+        font-size: $font-size;
+        text-align: center;
+        padding: 8px 8px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+}
+
+.blue {
+    $text-color: $white;
+    $btn-color: $blue;
+    a,
+    span {
+        background-color: $btn-color;
+        border: 1px solid $btn-color;
+        color: $text-color;
+    }
+    a,
+    span:hover {
+        background-color: darken($btn-color, 5);
+        border: 1px solid darken($btn-color, 5);
+    }
+    a,
+    span:active {
+        background-color: darken($btn-color, 10);
+        border: 1px solid darken($btn-color, 10);
+    }
+}
+
+.black {
+    $text-color: $white;
+    $btn-color: $black;
+    a,
+    span {
+        background-color: $btn-color;
+        border: 1px solid $btn-color;
+        color: $text-color;
+    }
+    a,
+    span:hover {
+        background-color: darken($btn-color, 5);
+        border: 1px solid darken($btn-color, 5);
+    }
+    a,
+    span:active {
+        background-color: darken($btn-color, 10);
+        border: 1px solid darken($btn-color, 10);
+    }
+}
