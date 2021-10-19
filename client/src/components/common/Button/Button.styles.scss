@@ -1,0 +1,38 @@
+//-------> Colors
+$blue: #5c8bf0;
+$black: #0d1117;
+$white: #ffffff;
+
+//-------> Variables
+$text-color: $white;
+$btn-color: $blue;
+$font-size: 14px;
+
+.btn {
+    margin-left: 2px;
+    margin-right: 2px;
+    min-width: 70px;
+    font-family: 'Roboto', sans-serif;
+    font-size: $font-size;
+    padding: 8px 8px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.blue {
+    $text-color: $white;
+    $btn-color: $blue;
+    display: inline-block;
+    background-color: $btn-color;
+    border: 1px solid $btn-color;
+    color: $text-color;
+}
+.blue:hover {
+    background-color: darken($btn-color, 5);
+    border: 1px solid darken($btn-color, 5);
+}
+.blue:active {
+    background-color: darken($btn-color, 10);
+    border: 1px solid darken($btn-color, 10);
+}

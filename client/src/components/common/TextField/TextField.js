@@ -2,37 +2,42 @@
 'use strict';
 
 //--------->Import stylesheet
-import './base-input.styles.scss';
+import './TextField.styles.scss';
 
 //---------> Import React
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default class BaseInput extends React.Component {
+export class TextField extends React.Component {
     constructor(props) {
         super(props);
         this.state = { value: '' };
         this.handleChange = this.handleChange.bind(this);
     }
-    static propTypes = {
-        id: PropTypes.string,
-    };
 
     handleChange(event) {
         this.setState({ value: event.target.value });
     }
 
     render() {
-        const className = ['input-field'];
+        const className = ['text-field'];
+        const inlinStyle = { width: this.props.width };
         return (
-            <div className={className.join(' ').trim()}>
+            <>
                 <input
+                    className={className.join(' ').trim()}
                     id={this.props.id}
                     value={this.state.value}
                     type='text'
                     onChange={this.handleChange}
+                    style={inlinStyle}
                 />
-            </div>
+            </>
         );
     }
 }
+
+TextField.propTypes = {
+    id: PropTypes.string,
+    width: PropTypes.string,
+};
