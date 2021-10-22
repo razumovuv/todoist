@@ -8,7 +8,7 @@ import './application.styles.scss';
 import React from 'react';
 
 //---------> Import components
-import { TODOForm } from '@components/TODO/TODOForm';
+import { TODOist } from '@components/TODOist';
 
 export default class Application extends React.Component {
     constructor(props) {
@@ -16,11 +16,7 @@ export default class Application extends React.Component {
     }
 
     render() {
-        return (
-            <div className='main-conteiner'>
-                <TODOForm />
-            </div>
-        );
+        return <TODOist />;
     }
 }
 //------------------------ End of application.js ----------------------------------

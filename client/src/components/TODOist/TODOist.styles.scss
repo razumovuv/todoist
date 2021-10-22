@@ -1,0 +1,27 @@
+.todo-main-conteiner {
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border-radius: 5px;
+    overflow: hidden;
+    min-width: 320px;
+    width: 360px;
+    background-color: white;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.todo-wrapper {
+    position: relative;
+    margin: 0 auto;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.todo-wrapper.todo-wrapper_flex {
+    display: inline-flex;
+}
