@@ -11,9 +11,9 @@ import { IconButton } from '@components/common/IconButton';
 import { CheckBox } from '@components/common/CheckBox';
 
 export class TODOItem extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+    handleEdit = (buttonId) => this.props.editHandler(buttonId);
+    handleDelete = (buttonId) => this.props.deleteHandler(buttonId);
+    handleComplite = (event) => this.props.compliteHandler(event);
 
     render() {
         return (
@@ -21,28 +21,26 @@ export class TODOItem extends React.Component {
                 <li id={this.props.id}>
                     <div className='todo-list__task'>
                         <CheckBox
-                            id={this.props.id + '_itemCheck'}
-                            text='Task1'
+                            id={'check_' + this.props.id}
+                            label={this.props.children}
+                            checked={this.props.complited ? 'checked' : ''}
+                            changeHandler={this.handleComplite}
                         />
                     </div>
                     <div className='todo-list__btn-panel'>
                         <IconButton
-                            id={this.props.id + '_itemEditButton'}
+                            id={'editBtn_' + this.props.id}
                             type='Edit'
                             size='28px'
                             color='#5c8bf0'
-                            clickHandler={() => {
-                                console.log('Кнопка редактировать');
-                            }}
+                            clickHandler={this.handleEdit}
                         />
                         <IconButton
-                            id={this.props.id + '_itemDeleteButton'}
+                            id={'deleteBtn_' + this.props.id}
                             type='Delete'
                             size='28px'
                             color='red'
-                            clickHandler={() => {
-                                console.log('Кнопка удалить');
-                            }}
+                            clickHandler={this.handleDelete}
                         />
                     </div>
                 </li>
@@ -53,4 +51,8 @@ export class TODOItem extends React.Component {
 
 TODOItem.propTypes = {
     id: PropTypes.string,
+    complited: PropTypes.bool,
+    deleteHandler: PropTypes.func,
+    editHandler: PropTypes.func,
+    compliteHandler: PropTypes.func,
 };
