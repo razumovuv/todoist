@@ -9,28 +9,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export class TextField extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { value: '' };
-        this.handleChange = this.handleChange.bind(this);
-    }
-
-    handleChange(event) {
-        this.setState({ value: event.target.value });
-    }
+    handleChange = (event) => this.props.changeHandler(event);
 
     render() {
-        const className = ['text-field'];
-        const inlinStyle = { width: this.props.width };
+        const className = ['text-field', this.props.customStyle];
         return (
             <>
                 <input
                     className={className.join(' ').trim()}
                     id={this.props.id}
-                    value={this.state.value}
+                    value={this.props.value}
                     type='text'
                     onChange={this.handleChange}
-                    style={inlinStyle}
                 />
             </>
         );
@@ -39,5 +29,7 @@ export class TextField extends React.Component {
 
 TextField.propTypes = {
     id: PropTypes.string,
-    width: PropTypes.string,
+    value: PropTypes.string,
+    customStyle: PropTypes.string,
+    changeHandler: PropTypes.func,
 };
