@@ -11,14 +11,7 @@ import PropTypes from 'prop-types';
 import { TiEdit, TiDelete } from 'react-icons/ti/index.esm.js';
 
 export class IconButton extends React.Component {
-    constructor(props) {
-        super(props);
-        this.handleClick.bind(this);
-    }
-
-    handleClick = () => {
-        this.props.clickHandler(this.props.id);
-    };
+    handleClick = () => this.props.clickHandler(this.props.id);
     render() {
         const Icons = {
             Edit: <TiEdit size={this.props.size} color={this.props.color} />,
@@ -46,4 +39,8 @@ IconButton.propTypes = {
     size: PropTypes.string,
     color: PropTypes.string,
     clickHandler: PropTypes.func,
+};
+
+IconButton.defaultProps = {
+    clickHandler: () => {},
 };
