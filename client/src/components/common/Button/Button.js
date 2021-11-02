@@ -9,11 +9,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export class Button extends React.Component {
-    constructor(props) {
-        super(props);
-        this.handleClick.bind(this);
-    }
-
     handleClick = () => {
         this.props.clickHandler(this.props.id);
     };
@@ -43,4 +38,8 @@ Button.propTypes = {
     clickHandler: PropTypes.func,
     type: PropTypes.string,
     colorClass: PropTypes.string,
+};
+
+Button.defaultProps = {
+    clickHandler: () => {},
 };
