@@ -13,33 +13,38 @@ import { TextField } from '@components/common/TextField';
 import { Button } from '@components/common/Button';
 
 export class TODOForm extends React.Component {
-    constructor(props) {
-        super(props);
-        this.inputFielsRef = React.createRef();
-    }
+    handleSubmit = (event) => this.props.submitHandler(event);
+    handleChange = (event) => this.props.changeHandler(event);
 
     render() {
         return (
-            <div className='todo-wrapper todo-wrapper_flex'>
-                <div className='text-field-box'>
-                    <TextField
-                        id='todoInput'
-                        width='100%'
-                        ref={this.inputFielsRef}
-                    />
+            <form onSubmit={this.handleSubmit} id={this.props.id}>
+                <div className='todo-wrapper todo-wrapper_flex'>
+                    <div className='text-field-box'>
+                        <TextField
+                            id='todoInput'
+                            value={this.props.inputValue}
+                            customStyle='text-field-custom'
+                            changeHandler={this.handleChange}
+                        />
+                    </div>
+                    <div className='button-box'>
+                        <Button
+                            id='todoAdd'
+                            colorClass='blue'
+                            text='Добавить'
+                            type='submit'
+                        />
+                    </div>
                 </div>
-                <div className='button-box'>
-                    <Button
-                        id='todoAdd'
-                        colorClass='blue'
-                        text='Добавить'
-                        clickHandler={() => {
-                            const inputfield = this.inputFielsRef.current;
-                            alert(inputfield.state.value);
-                        }}
-                    />
-                </div>
-            </div>
+            </form>
         );
     }
 }
+
+TODOForm.propTypes = {
+    id: PropTypes.string,
+    inputValue: PropTypes.string,
+    submitHandler: PropTypes.func,
+    changeHandler: PropTypes.func,
+};

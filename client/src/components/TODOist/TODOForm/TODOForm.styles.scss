@@ -9,3 +9,12 @@
     float: right;
     padding-left: 2px;
 }
+
+.text-field-custom {
+    width: 100%;
+    border: 1px solid Silver;
+    &:focus {
+        outline: none;
+        border: 1px solid darken($color: Silver, $amount: 20);
+    }
+}
