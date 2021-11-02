@@ -8,11 +8,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export class CheckBox extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { value: false };
-    }
-
+    handleChange = (event) => this.props.changeHandler(event);
     render() {
         const className = ['checkbox'];
         return (
@@ -21,14 +17,17 @@ export class CheckBox extends React.Component {
                     className={className.join(' ').trim()}
                     type='checkbox'
                     id={this.props.id}
+                    checked={this.props.checked}
+                    onChange={this.handleChange}
                 />
-                <label htmlFor={this.props.id}> {this.props.text} </label>
+                <label htmlFor={this.props.id}> {this.props.label} </label>
             </>
         );
     }
 }
-
 CheckBox.propTypes = {
     id: PropTypes.string,
-    text: PropTypes.string,
+    label: PropTypes.string,
+    checked: PropTypes.string,
+    changeHandler: PropTypes.func,
 };
