@@ -20,14 +20,13 @@ export class CheckBox extends React.Component {
                     checked={this.props.checked}
                     onChange={this.handleChange}
                 />
-                <label htmlFor={this.props.id}> {this.props.label} </label>
+                <label htmlFor={this.props.id}>{this.props.children}</label>
             </>
         );
     }
 }
 CheckBox.propTypes = {
     id: PropTypes.string,
-    label: PropTypes.string,
     checked: PropTypes.string,
     changeHandler: PropTypes.func,
 };
