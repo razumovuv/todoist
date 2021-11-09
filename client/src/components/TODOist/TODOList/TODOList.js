@@ -14,6 +14,7 @@ export class TODOList extends React.Component {
     handleItemEdit = (buttonId) => this.props.itemEditHandler(buttonId);
     handleItemDelete = (buttonId) => this.props.itemDeleteHandler(buttonId);
     handleItemComplite = (event) => this.props.itemCompliteHandler(event);
+    handleItemUpdate = (event, cb) => this.props.itemUpdateHandler(event, cb);
     render() {
         return (
             <div className='todo-wrapper'>
@@ -23,9 +24,10 @@ export class TODOList extends React.Component {
                             key={todo.id}
                             id={todo.id.toString()}
                             deleteHandler={this.handleItemDelete}
-                            editHandler={this.handleItemEdit}
                             compliteHandler={this.handleItemComplite}
                             complited={todo.complited}
+                            isDisabled={todo.isDisabled}
+                            updateHandler={this.handleItemUpdate}
                         >
                             {todo.task}
                         </TODOItem>
@@ -38,7 +40,7 @@ export class TODOList extends React.Component {
 
 TODOList.propTypes = {
     todos: PropTypes.array,
-    itemEditHandler: PropTypes.func,
     itemDeleteHandler: PropTypes.func,
     itemCompliteHandler: PropTypes.func,
+    itemUpdateHandler: PropTypes.func,
 };
