@@ -13,8 +13,17 @@ import { TextField } from '@components/common/TextField';
 import { Button } from '@components/common/Button';
 
 export class TODOForm extends React.Component {
-    handleSubmit = (event) => this.props.submitHandler(event);
-    handleChange = (event) => this.props.changeHandler(event);
+    constructor(props) {
+        super(props);
+        this.state = { inputValue: '' };
+    }
+    handleSubmit = (event, cb) =>
+        this.props.submitHandler(event, () => {
+            this.setState({ inputValue: '' });
+        });
+    handleChange = (event) => {
+        this.setState({ inputValue: event.target.value });
+    };
 
     render() {
         return (
@@ -23,7 +32,7 @@ export class TODOForm extends React.Component {
                     <div className='text-field-box'>
                         <TextField
                             id='todoInput'
-                            value={this.props.inputValue}
+                            value={this.state.inputValue}
                             customStyle='text-field-custom'
                             changeHandler={this.handleChange}
                         />
@@ -46,5 +55,4 @@ TODOForm.propTypes = {
     id: PropTypes.string,
     inputValue: PropTypes.string,
     submitHandler: PropTypes.func,
-    changeHandler: PropTypes.func,
 };
