@@ -11,15 +11,16 @@ import PropTypes from 'prop-types';
 import { TODOForm } from '@components/TODOist/TODOForm';
 import { TODOList } from '@components/TODOist/TODOList';
 import { TODOHeader } from '@components/TODOist/TODOHeader';
+//{id , task, complited, isEditing, newValue}
 
 export class TODOist extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: '',
             todos: [],
         };
     }
+
     handleItemDelete = (buttonId) => {
         const todos = this.state.todos;
         const ID_FIRST_CHAR_POSITION = 10;
@@ -30,26 +31,22 @@ export class TODOist extends React.Component {
             .indexOf(parseInt(buttonId.substring(ID_FIRST_CHAR_POSITION)));
         todos.splice(todoIndex, 1);
         this.setState({ todos: todos });
-        console.log(this.state.todos);
     };
-    handleItemEdit = (buttonId) => {
-        console.log('UPDATE button ID:' + buttonId);
-    };
-    handleChangeInput = (event) => {
-        this.setState({ value: event.target.value });
-    };
-    handleAdd = (event) => {
-        const _todos = this.state.todos;
-        _todos.push({
-            // id: _todos[_todos.length - 1].id + 1,
-            id: Date.now(),
-            task: this.state.value,
-            complited: false,
-        });
-        this.setState({ todos: _todos });
+
+    handleItemAdd = (event, cb) => {
+        if (!(event.target[0].value === '')) {
+            const _todos = this.state.todos;
+            _todos.push({
+                id: Date.now(),
+                task: event.target[0].value,
+                complited: false,
+            });
+            this.setState({ todos: _todos });
+        }
+        cb();
         event.preventDefault();
     };
-    handleComplite = (event) => {
+    handleItemComplite = (event) => {
         const target = event.target;
         const _todos = this.state.todos;
         const ID_FIRST_CHAR_POSITION = 6;
@@ -63,22 +60,33 @@ export class TODOist extends React.Component {
         _todos[todoIndex].complited = !this.state.todos[todoIndex].complited;
         this.setState({ todos: _todos });
     };
+    handleItemUpdate = (event, cb) => {
+        const target = event.target;
+        const _todos = this.state.todos;
+        const ID_FIRST_CHAR_POSITION = 10;
+
+        const todoIndex = _todos
+            .map((todo) => {
+                return todo.id;
+            })
+            .indexOf(parseInt(target.id.substring(ID_FIRST_CHAR_POSITION)));
+
+        _todos[todoIndex].task = target[0].value;
+        this.setState({ todos: _todos });
+        cb(_todos[todoIndex].task);
+        event.preventDefault();
+    };
 
     render() {
         return (
             <div className='todo-main-conteiner' id={this.props.id}>
                 <TODOHeader />
-                <TODOForm
-                    id='todoForm'
-                    submitHandler={this.handleAdd}
-                    changeHandler={this.handleChangeInput}
-                    value={this.state.value}
-                />
+                <TODOForm id='todoForm' submitHandler={this.handleItemAdd} />
                 <TODOList
                     todos={this.state.todos}
-                    itemEditHandler={this.handleItemEdit}
-                    itemCompliteHandler={this.handleComplite}
+                    itemCompliteHandler={this.handleItemComplite}
                     itemDeleteHandler={this.handleItemDelete}
+                    itemUpdateHandler={this.handleItemUpdate}
                 />
             </div>
         );
