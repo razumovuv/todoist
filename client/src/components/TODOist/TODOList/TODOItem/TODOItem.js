@@ -102,7 +102,6 @@ export class TODOItem extends React.Component {
 TODOItem.propTypes = {
     id: PropTypes.string,
     complited: PropTypes.bool,
-    isDisabled: PropTypes.bool,
     deleteHandler: PropTypes.func,
     compliteHandler: PropTypes.func,
     updateHandler: PropTypes.func,
