@@ -26,10 +26,9 @@ export class TODOList extends React.Component {
                             deleteHandler={this.handleItemDelete}
                             compliteHandler={this.handleItemComplite}
                             complited={todo.complited}
-                            isDisabled={todo.isDisabled}
                             updateHandler={this.handleItemUpdate}
                         >
-                            {todo.task}
+                            {todo.title}
                         </TODOItem>
                     ))}
                 </ul>
