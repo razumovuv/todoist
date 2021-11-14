@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
 import { TODOForm } from '@components/TODOist/TODOForm';
 import { TODOList } from '@components/TODOist/TODOList';
 import { TODOHeader } from '@components/TODOist/TODOHeader';
-//{id , task, complited, isEditing, newValue}
 
 export class TODOist extends React.Component {
     constructor(props) {
@@ -38,7 +37,7 @@ export class TODOist extends React.Component {
             const _todos = this.state.todos;
             _todos.push({
                 id: Date.now(),
-                task: event.target[0].value,
+                title: event.target[0].value,
                 complited: false,
             });
             this.setState({ todos: _todos });
@@ -80,7 +79,7 @@ export class TODOist extends React.Component {
     render() {
         return (
             <div className='todo-main-conteiner' id={this.props.id}>
-                <TODOHeader />
+                <TODOHeader>Мои дела на:{' ' + this.props.date}</TODOHeader>
                 <TODOForm id='todoForm' submitHandler={this.handleItemAdd} />
                 <TODOList
                     todos={this.state.todos}
@@ -95,4 +94,9 @@ export class TODOist extends React.Component {
 
 TODOist.propTypes = {
     id: PropTypes.string,
+    date: PropTypes.string,
+};
+
+TODOist.defaultProps = {
+    date: '',
 };
