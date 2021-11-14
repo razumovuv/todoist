@@ -11,10 +11,6 @@ import React from 'react';
 import { TODOist } from '@components/TODOist';
 
 export default class Application extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return <TODOist />;
     }
