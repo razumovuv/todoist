@@ -8,16 +8,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export class TODOHeader extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { $date: 'дата' };
-    }
-
     render() {
+        const todoDate = new Date();
         return (
             <div className='todo-wrapper'>
                 <div className='todo-header'>
-                    <h3> Мои дела на: {this.state.$date}</h3>
+                    <h3>{this.props.children}</h3>
                 </div>
             </div>
         );
