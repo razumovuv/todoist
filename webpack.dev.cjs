@@ -17,7 +17,7 @@ module.exports = {
         port: 8080,
     },
     entry: {
-        app: path.resolve(__dirname, './client/src/index.js'),
+        app: path.resolve(__dirname, './src/index.js'),
     },
     output: {
         path: path.resolve(__dirname, './dist/public'),
@@ -61,20 +61,17 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx', '.css', '.scss', '...'],
         alias: {
-            '@': path.resolve(__dirname, 'client/src/'),
-            '@assets': path.resolve(__dirname, 'client/src/assets'),
-            '@components': path.resolve(__dirname, 'client/src/components'),
-            '@views': path.resolve(__dirname, 'client/src/views'),
-            '@styles': path.resolve(__dirname, 'client/src/styles'),
-            '@utils': path.resolve(__dirname, 'client/src/utils'),
+            '@': path.resolve(__dirname, 'src/'),
+            '@assets': path.resolve(__dirname, 'src/assets'),
+            '@components': path.resolve(__dirname, 'src/components'),
+            '@views': path.resolve(__dirname, 'src/views'),
+            '@styles': path.resolve(__dirname, 'src/styles'),
+            '@utils': path.resolve(__dirname, 'src/utils'),
         },
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.resolve(
-                __dirname,
-                './client/src/templates/template.html',
-            ),
+            template: path.resolve(__dirname, './src/templates/template.html'),
             filename: 'index.html',
         }),
         new CleanWebpackPlugin(),
